@@ -15,7 +15,7 @@ db.authenticate()
 const server = express();
 
 server.use(cors());
-server.use(morgan('dev'));
+server.use(morgan('dev')); 
 server.use(bodyParser.json());
 server.use('/api/quiniela', routes);
 server.use('/api/quiniela',express.static(__dirname + '/public'));

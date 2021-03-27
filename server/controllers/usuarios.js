@@ -11,7 +11,7 @@ const agregarUsuario = async (req, res) => {
         let bodySaldoAnterior = 0;
 
         if (isEmpty(body.nombre)) return res.status(400).send('El nombre es requerido');
-        if (isEmpty(body.email)) return res.status(400).send('El email es requerido');
+        if (isEmpty(body.correo)) return res.status(400).send('El correo es requerido');
         if (isEmpty(body.usuario)) return res.status(400).send('El nombre de usuario es requerido');
         if (isEmpty(body.contraseña)) return res.status(400).send('La contraseña es requerida');
 
