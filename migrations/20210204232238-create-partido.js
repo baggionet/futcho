@@ -26,14 +26,17 @@ module.exports = {
       localId: {
         type: Sequelize.INTEGER
       },
-      visitaId: {
+      localGol: {
         type: Sequelize.INTEGER
       },
-      localGol: {
+      visitaId: {
         type: Sequelize.INTEGER
       },
       visitaGol: {
         type: Sequelize.INTEGER
+      },
+      estadio: {
+        type: Sequelize.STRING
       },
       resultado: {
         type: Sequelize.STRING

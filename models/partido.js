@@ -7,9 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     fecha: DataTypes.STRING,
     hora: DataTypes.STRING,
     localId: DataTypes.INTEGER,
-    visitaId: DataTypes.INTEGER,
     localGol: DataTypes.INTEGER,
+    visitaId: DataTypes.INTEGER,
     visitaGol: DataTypes.INTEGER,
+    estadio: DataTypes.STRING,
     resultado: DataTypes.STRING
   }, {});
   partido.associate = function(models) {

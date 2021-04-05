@@ -11,6 +11,10 @@ router.route('/usuario/:usuarioId').get(usuario.usuarioXId);
 router.route('/partido').post(partido.nuevoPartido);
 router.route('/partido').get(partido.listaReg);
 router.route('/partido/:partidoId').get(partido.regById);
+router.route('/jornada/:numJornada').get(partido.findByJornada);
+router.route('/partido/:idPartido').put(partido.editPartido);
+
+
 
 /* Rutas de equipos  */
 router.route('/equipo').get(equipo.listaReg);
@@ -21,4 +25,9 @@ router.route('/estadistica').post(estadistica.agregarEstadistica);
 router.route('/estadistica').get(estadistica.listarReg);
 router.route('/estadistica/:eId').get(estadistica.regById);
 router.route('/estadistica').put(estadistica.actualizacionReg);
+
+/*Ru */
+
+
+
 export default router;
