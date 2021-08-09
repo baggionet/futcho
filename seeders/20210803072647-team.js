@@ -1,156 +1,156 @@
+'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('equipos', [
+    return queryInterface.bulkInsert('teams', [
       {//1
-        nombre: "Tijuana",
-        apodo: "Cholos",
+        name: "Tijuana",
+        nickName: "Cholos",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/5/5.png",
-        estadio: "Estadio Caliente",
+        stadium: "Estadio Caliente",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//2
-        nombre: "Toluca",
-        apodo: "Toluca",
+        name: "Toluca",
+        nickName: "Toluca",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/17/17.png",
-        estadio: "Estadio Nemesio Diez",
+        stadium: "Estadio Nemesio Diez",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//3
-        nombre: "Monterrey",
-        apodo: "Rayados",
+        name: "Monterrey",
+        nickName: "Rayados",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/14/14.png",
-        estadio: "Estadio BBVA",
+        stadium: "Estadio BBVA",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//4
-        nombre: "América",
-        apodo: "Aguilas",
+        name: "América",
+        nickName: "Aguilas",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/1/1.png",
-        estadio: "Estadio Azteca",
+        stadium: "Estadio Azteca",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//5
-        nombre: "Cruz Azul",
-        apodo: "La maquina",
+        name: "Cruz Azul",
+        nickName: "La maquina",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/6/6.png",
-        estadio: "Estadio Azteca",
+        stadium: "Estadio Azteca",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//6
-        nombre: "Santos",
-        apodo: "Santos Laguna",
+        name: "Santos",
+        nickName: "Santos Laguna",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/15/15.png",
-        estadio: "Estadio TSM Corona",
+        stadium: "Estadio TSM Corona",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//7
-        nombre: "Querétaro",
-        apodo: "Gallos Blancos",
+        name: "Querétaro",
+        nickName: "Gallos Blancos",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/12037/12037.png",
-        estadio: "Estadio La Corregidora",
+        stadium: "Estadio La Corregidora",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//8
-        nombre: "Puebla F.C.",
-        apodo: "La franja",
+        name: "Puebla F.C.",
+        nickName: "La franja",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/11550/11550.png",
-        estadio: "Estadio Cuauhtémoc",
+        stadium: "Estadio Cuauhtémoc",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//9
-        nombre: "Tigres",
-        apodo: "tigres",
+        name: "Tigres",
+        nickName: "tigres",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/16/16.png",
-        estadio: "Estadio Universitario",
+        stadium: "Estadio Universitario",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//10
-        nombre: "San Luis",
-        apodo: "San Luis",
+        name: "San Luis",
+        nickName: "San Luis",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/11220/11220.png",
-        estadio: "Estadio Alfonso Lastras Ramírez",
+        stadium: "Estadio Alfonso Lastras Ramírez",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//11
-        nombre: "Mazatlán FC",
-        apodo: "Mazatlán",
+        name: "Mazatlán FC",
+        nickName: "Mazatlán",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/12043/12043.png",
-        estadio: "Estadio Mazatlán",
+        stadium: "Estadio Mazatlán",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//12
-        nombre: "Pumas",
-        apodo: "Pumas",
+        name: "Pumas",
+        nickName: "Pumas",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/18/18.png",
-        estadio: "Estadio Olímpico Universitario",
+        stadium: "Estadio Olímpico Universitario",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//13
-        nombre: "Guadalajara",
-        apodo: "Chivas",
+        name: "Guadalajara",
+        nickName: "Chivas",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/7/7.png",
-        estadio: "Estadio AKRON",
+        stadium: "Estadio AKRON",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//14
-        nombre: "FC Juárez",
-        apodo: "Juárez",
+        name: "FC Juárez",
+        nickName: "Juárez",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/11790/11790.png",
-        estadio: "Estadio Olímpico Benito Juárez",
+        stadium: "Estadio Olímpico Benito Juárez",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//15
-        nombre: "Necaxa",
-        apodo: "Necaxa",
+        name: "Necaxa",
+        nickName: "Necaxa",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/29/29.png",
-        estadio: "Estadio Victoria",
+        stadium: "Estadio Victoria",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//16
-        nombre: "León",
-        apodo: "León",
+        name: "León",
+        nickName: "León",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/9/9.png",
-        estadio: "Estadio Nou Camp",
+        stadium: "Estadio Nou Camp",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//17
-        nombre: "Pachuca",
-        apodo: "Pachuca",
+        name: "Pachuca",
+        nickName: "Pachuca",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/11/11.png",
-        estadio: "Estadio Hidalgo",
+        stadium: "Estadio Hidalgo",
         createdAt: new Date(), 
         updatedAt: new Date()
       },
       {//18
-        nombre: "Atlas",
-        apodo: "Atlas",
+        name: "Atlas",
+        nickName: "Atlas",
         logo: "https://s3.amazonaws.com/lmxwebsite/docs/archdgtl/AfldDrct/logos64x64/10445/10445.png",
-        estadio: "Estadio Jalisco",
+        stadium: "Estadio Jalisco",
         createdAt: new Date(), 
         updatedAt: new Date()
       }
     ], {});
-    
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('equipos', null, {});
-    
+    return queryInterface.bulkDelete('teams', null, {});
   }
 };

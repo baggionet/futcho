@@ -1,37 +1,24 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('usuarios', {
+    return queryInterface.createTable('teams', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nombre: {
+      name: {
         type: Sequelize.STRING
       },
-      correo: {
+      nickName: {
         type: Sequelize.STRING
       },
-      usuario: {
+      logo: {
         type: Sequelize.STRING
       },
-      contraseña: {
+      stadium: {
         type: Sequelize.STRING
-      },
-      foto: {
-        type: Sequelize.STRING
-      },
-      cuentaId: {
-        type: Sequelize.INTEGER
-      },
-      rollId: {
-        type: Sequelize.INTEGER
-      },
-      statusDelete: {
-        type: Sequelize.BOOLEAN,
-        defaultValue:false
       },
       createdAt: {
         allowNull: false,
@@ -44,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('usuarios');
+    return queryInterface.dropTable('teams');
   }
 };

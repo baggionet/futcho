@@ -1,30 +1,30 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('depositos', {
+    return queryInterface.createTable('detail-pools', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      cuentaId: {
+      poolId: {
         type: Sequelize.INTEGER
       },
-      numero: {
-        type: Sequelize.INTEGER
-      },
-      fecha: {
-        type: Sequelize.DATE
-      },
-      hora: {
-        type: Sequelize.DATE
-      },
-      referencia: {
+      nameLocal: {
         type: Sequelize.STRING
       },
-      monto: {
-        type: Sequelize.INTEGER
+      stateLocal: {
+        type: Sequelize.BOOLEAN
+      },
+      stateTie: {
+        type: Sequelize.BOOLEAN
+      },
+      nameVisitor: {
+        type: Sequelize.STRING
+      },
+      stateVisitor: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +37,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('depositos');
+    return queryInterface.dropTable('detail-pools');
   }
 };

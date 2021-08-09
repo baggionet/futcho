@@ -1,14 +1,14 @@
 import db from '../config/database';
 
 const models = {
-  usuario: db.import('./usuario'),
-  quiniela: db.import('./quiniela'),
-  partido: db.import('./partido'),
-  equipo: db.import('./equipo'),
-  detallesQuiniela: db.import('./detallesquiniela'),
-  depositos: db.import('./depositos'),
-  cuenta: db.import('./cuenta'),
-  estadistica: db.import('./estadistica')
+  users: db.import('./users'),
+  pool: db.import('./pool'),
+  game: db.import('./game'),
+  team: db.import('./team'),
+  detailpool: db.import('./detailpool'),
+  deposits: db.import('./deposits'),
+  account: db.import('./account'),
+  statistics: db.import('./statistics')
 }
 
 Object.keys(models).forEach(key => {

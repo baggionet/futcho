@@ -1,30 +1,33 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('detallesQuinielas', {
+    return queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      quinielaId: {
+      name: {
+        type: Sequelize.STRING
+      },
+      nickName: {
+        type: Sequelize.STRING
+      },
+      email: {
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.STRING
+      },
+      photo: {
+        type: Sequelize.STRING
+      },
+      accountId: {
         type: Sequelize.INTEGER
       },
-      nombreLocal: {
-        type: Sequelize.STRING
-      },
-      estadoLocal: {
-        type: Sequelize.BOOLEAN
-      },
-      estadoEmpate: {
-        type: Sequelize.BOOLEAN
-      },
-      nombreVisita: {
-        type: Sequelize.STRING
-      },
-      estadoVisita: {
-        type: Sequelize.BOOLEAN
+      rollId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +40,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('detallesQuinielas');
+    return queryInterface.dropTable('users');
   }
 };

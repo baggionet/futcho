@@ -1,26 +1,26 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('partidos', {
+    return queryInterface.createTable('games', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      temporada: {
+      season: {
         type: Sequelize.STRING
       },
-      torneo: {
+      tournament: {
         type: Sequelize.STRING
       },
-      jornada: {
+      journey: {
         type: Sequelize.INTEGER
       },
-      fecha: {
+      date: {
         type: Sequelize.STRING
       },
-      hora: {
+      time: {
         type: Sequelize.STRING
       },
       localId: {
@@ -29,16 +29,16 @@ module.exports = {
       localGol: {
         type: Sequelize.INTEGER
       },
-      visitaId: {
+      visitorId: {
         type: Sequelize.INTEGER
       },
-      visitaGol: {
+      visitorGol: {
         type: Sequelize.INTEGER
       },
-      estadio: {
+      stadium: {
         type: Sequelize.STRING
       },
-      resultado: {
+      result: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -52,6 +52,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('partidos');
+    return queryInterface.dropTable('games');
   }
 };

@@ -1,32 +1,32 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('quinielas', {
+    return queryInterface.createTable('pools', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      numero: {
+      number: {
         type: Sequelize.INTEGER
       },
-      fecha: {
+      date: {
         type: Sequelize.DATE
       },
-      temporada: {
+      season: {
         type: Sequelize.STRING
       },
-      torneo: {
+      tournament: {
         type: Sequelize.STRING
       },
-      jornada: {
+      journey: {
         type: Sequelize.INTEGER
       },
-      usuarioId: {
+      userId: {
         type: Sequelize.INTEGER
       },
-      pagado: {
+      paid: {
         type: Sequelize.BOOLEAN
       },
       createdAt: {
@@ -40,6 +40,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('quinielas');
+    return queryInterface.dropTable('pools');
   }
 };

@@ -32,6 +32,7 @@ services:
       - PGDATABASE=quinieladb
       - PGPASSWORD=quiniela123
       - PGPORT=5432
+      - SEED=estaeslaclavemaestra
 
 volumes:
   notused:

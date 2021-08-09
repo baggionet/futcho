@@ -10,17 +10,16 @@ const agregarEstadistica = async (req, res) => {
     try {
         const { body } = req;
 
-        if (isEmpty(body.temporada)) return res.status(400).send('El campo temporada es requerido');
-        if (isEmpty(body.torneo)) return res.status(400).send('El campo torneo es requerido');
-        if (isEmpty(body.jornada)) return res.status(400).send('El campo jornada es requerido');
-        if (isEmpty(body.fecha)) return res.status(400).send('El campo Fecha es requerido');
-        if (isEmpty(body.nombre)) return res.status(400).send('El campo hora es requerido');
+        if (isEmpty(body.season)) return res.status(400).send('El campo temporada es requerido');
+        if (isEmpty(body.tournament)) return res.status(400).send('El campo torneo es requerido');
+        if (isEmpty(body.journey)) return res.status(400).send('El campo jornada es requerido');
+        if (isEmpty(body.date)) return res.status(400).send('El campo Fecha es requerido');
         
-        const nuevaEstadistica = await models.estadistica.create({
-           equipoId: body.equipoId,
-           temporada: body.temporada,
-           torneo: body.torneo,
-           jornada: body.jornada,
+        const nuevaEstadistica = await models.statistics.create({
+           teamId: body.teamId,
+           season: body.season,
+           tournament: body.tournament,
+           journey: body.journey,
            jj: body.jj,
            jg: body.jg,
            je: body.je,
@@ -28,8 +27,8 @@ const agregarEstadistica = async (req, res) => {
            gc: body.gc,
            gf: body.gf,
            gdif: body.gdif,
-           puntos: body.puntos,
-           posicion: body.posicion 
+           score: body.score,
+           position: body.position 
         });
 
         return res.status(201).send(nuevaEstadistica);
@@ -44,7 +43,7 @@ const agregarEstadistica = async (req, res) => {
 */
 const listarReg = async (req, res) => {
     try {
-        const mostrarReg = await models.estadistica.findAll();
+        const mostrarReg = await models.statistics.findAll();
 
         return res.status(201).send(mostrarReg);
     } catch (error) {
@@ -59,9 +58,9 @@ const listarReg = async (req, res) => {
 const regById = async (req, res) => {
     try {
         const pk = req.params.eId;
-        const busquedaId = await models.estadistica.findByPk(pk, {
+        const busquedaId = await models.statistics.findByPk(pk, {
             include: {
-                model: models.equipo
+                model: models.team
             }
         });
         return res.status(201).send(busquedaId);
@@ -78,7 +77,7 @@ const actualizacionReg = async (req, res) => {
     const { body } =req;
     const pk = req.params.eId;
 
-    const busquedaEId = await models.estadistica.findByPk(pk);
+    const busquedaEId = await models.statistics.findByPk(pk);
 
     busquedaEId.jj += body.jj;
     busquedaEId.jg += body.jg;
@@ -91,11 +90,11 @@ const actualizacionReg = async (req, res) => {
     busquedaEId.gdif = busquedaEId.gf - busquedaEId.gc;
     busquedaEId.puntos = jg + je;
 
-    const actualizacion = await models.estadistica.update({
+    const actualizacion = await models.statistics.update({
         
-        temporada: busquedaEId.temporada,
-        torneo: busquedaEId.torneo,
-        jornada: busquedaEId.jornada,
+        season: busquedaEId.season,
+        tournament: busquedaEId.tournament,
+        journey: busquedaEId.journey,
         jj: busquedaEId.jj,
         jg: busquedaEId.jg,
         je: busquedaEId.je,
@@ -103,8 +102,8 @@ const actualizacionReg = async (req, res) => {
         gc: busquedaEId.gc,
         gf: busquedaEId.gc,
         gdif: busquedaEId.gdif,
-        puntos: busquedaEId.puntos,
-        posicion: 0
+        score: busquedaEId.score,
+        position: 0
     });
 };
 

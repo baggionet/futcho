@@ -7,6 +7,9 @@ router.route('/usuario').post(usuario.agregarUsuario);
 router.route('/usuario').get(usuario.listarUsuarios);
 router.route('/usuario/:usuarioId').get(usuario.usuarioXId);
 
+/*Rutas de auth*/
+router.route('/auth/login').post(usuario.login);
+
 /* Ruta de partidos  */ 
 router.route('/partido').post(partido.nuevoPartido);
 router.route('/partido').get(partido.listaReg);

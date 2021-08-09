@@ -9,8 +9,8 @@ import { isEmpty } from '../utils/methods';
 */
 const listaReg = async (req, res) => {
     try {
-        const mostrarReg = await models.equipo.findAll({
-            attributes:["id", "nombre", "apodo", "logo", "estadio" ]
+        const mostrarReg = await models.team.findAll({
+            attributes:["id", "name", "nickName", "logo", "stadium" ]
         });
 
         return res.status(201).send(mostrarReg);
@@ -26,9 +26,9 @@ const listaReg = async (req, res) => {
 const regId = async (req, res) => {
 try {
     const pk  = req.params.equipoId;
-    const busquedaId = await models.equipo.findByPk(pk, {
-        attributes: ["id", "nombre", "apodo", "estadio"],
-        include: models.estadistica, 
+    const busquedaId = await models.team.findByPk(pk, {
+        attributes: ["id", "name", "nickName", "stadium"],
+        include: models.statistics, 
         
     })
     if (isEmpty(busquedaId)) return res.status(204).send("No se encontro el equipo");

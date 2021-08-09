@@ -10,23 +10,23 @@ const nuevoPartido = async (req, res) => {
     try {
         const { body } = req;
 
-        if (isEmpty(body.temporada)) return res.status(400).send('El campo temporada es requerido');
-        if (isEmpty(body.torneo)) return res.status(400).send('El campo torneo es requerido');
-        if (isEmpty(body.jornada)) return res.status(400).send('El campo jornada es requerido');
-        if (isEmpty(body.fecha)) return res.status(400).send('El campo Fecha es requerido');
-        if (isEmpty(body.nombre)) return res.status(400).send('El campo hora es requerido');
+        if (isEmpty(body.season)) return res.status(400).send('El campo temporada es requerido');
+        if (isEmpty(body.tournament)) return res.status(400).send('El campo torneo es requerido');
+        if (isEmpty(body.journey)) return res.status(400).send('El campo jornada es requerido');
+        if (isEmpty(body.date)) return res.status(400).send('El campo Fecha es requerido');
 
-        const crearPartido = await models.partido.create({
-            temporada: body.temporada,
-            torneo: body.torneo,
-            jornada: body.jornada,
-            fecha: body.fecha,
-            hora: body.hora,
+        const crearPartido = await models.game.create({
+            season: body.season,
+            tournament: body.tournament,
+            journey: body.journey,
+            date: body.date,
+            time: body.time,
             localId: body.localId,
-            visitaId: body.visitaId,
+            visitorId: body.visitorId,
             localGol: body.localGol,
-            visitaGol: body.visitaGol,
-            resultado: body.resultado
+            visitorGol: body.visitorGol,
+            stadium: body.stadium,
+            result: body.result
         });
 
         return res.status(201).send(crearPartido)
@@ -41,20 +41,20 @@ const nuevoPartido = async (req, res) => {
 */
 const listaReg = async (req, res) =>{
     try {
-        const mostrarReg = await models.partido.findAll({
+        const mostrarReg = await models.game.findAll({
             attributes: [
                 "id", 
-                "temporada", 
-                "torneo", 
-                "jornada", 
-                "fecha", 
-                "hora", 
+                "season",
+                "tournament",
+                "journey",
+                "date",
+                "time",
                 "localId",
+                "visitorId",
                 "localGol",
-                "visitaId",
-                "visitaGol",
-                "estadio",
-                "resultado"
+                "visitorGol",
+                "stadium",
+                "result",
             ]
         });
         console.log(mostrarReg[3].localId);
@@ -72,20 +72,20 @@ const regById = async (req, res) => {
    try {
     const pk = req.params.partidoId;
 
-    const buscarId = await models.partido.findByPk(pk, {
+    const buscarId = await models.game.findByPk(pk, {
         attributes: [
             "id", 
-            "temporada", 
-            "torneo", 
-            "jornada", 
-            "fecha", 
-            "hora", 
+            "season", 
+            "tournament", 
+            "journey", 
+            "date", 
+            "time", 
             "localId",
+            "visitorId",
             "localGol",
-            "visitaId",
-            "visitaGol",
-            "estadio",
-            "resultado"
+            "visitorGol",
+            "stadium",
+            "result"
         ]
     });
     if(isEmpty(buscarId)) return res.status(204).send("No se econtro el usuario");
@@ -98,6 +98,8 @@ const regById = async (req, res) => {
 *
 *Se editara por partido buscado
 *solicitara solo dos campos localGol y visitaGol
+*y realizara la comparacion entre el resultado LocalGol y VisitaGol
+*y dependiendo del resultado mostrara E= empate, L = local o V = visitante
 *
 */
 const editPartido =  async (req, res) => {
@@ -110,54 +112,54 @@ const editPartido =  async (req, res) => {
         var partidoUpdate = null;
 
         // validar que venga el id del partido
-        if (isEmpty(pk)) return res.status(400).send('Prtido no seleccionado');
+        if (isEmpty(pk)) return res.status(400).send('Partido no seleccionado');
         
         //Buscar partido
-        const buscarPartido = models.partido.findByPk(pk);
+        const buscarPartido = models.game.findByPk(pk);
         if (isEmpty(buscarPartido)) return res.status(400).send('Partido no encontrado');
 
         //validar si el body.name viene vacio usar el de la base y si no viene vacio usar el body.name
-        let bodyTemporada = isEmpty(body.temporada) === true ? buscarPartido.temporada : body.temporada;
+        let bodyTemporada = isEmpty(body.season) === true ? buscarPartido.season : body.season;
         //validar si el body.name viene vacio usar el de la base y si no viene vacio usar el body.name
-        let bodyTorneo = isEmpty(body.torneo) === true ? buscarPartido.torneo : body.torneo;
+        let bodyTorneo = isEmpty(body.tournament) === true ? buscarPartido.tournament : body.tournament;
         //validar si el body.name viene vacio usar el de la base y si no viene vacio usar el body.name
-        let bodyJornada = isEmpty(body.jornada) === true ? buscarPartido.jornada : body.jornada;
+        let bodyJornada = isEmpty(body.journey) === true ? buscarPartido.journey : body.journey;
         //validar si el body.name viene vacio usar el de la base y si no viene vacio usar el body.name
-        let bodyFecha = isEmpty(body.fecha) === true ? buscarPartido.fecha : body.fecha;
+        let bodyFecha = isEmpty(body.date) === true ? buscarPartido.date : body.date;
         //validar si el body.name viene vacio usar el de la base y si no viene vacio usar el body.name
-        let bodyHora = isEmpty(body.hora) === true ? buscarPartido.hora : body.hora;
+        let bodyHora = isEmpty(body.time) === true ? buscarPartido.time : body.time;
         //validar si el body.name viene vacio usar el de la base y si no viene vacio usar el body.name
         let bodyLocalId = isEmpty(body.localId) === true ? buscarPartido.localId : body.localId;
         //validar si el body.name viene vacio usar el de la base y si no viene vacio usar el body.name
-        let bodyVisitaId = isEmpty(body.visitaId) === true ? buscarPartido.visitaId : body.visitaId;
+        let bodyVisitaId = isEmpty(body.visitorId) === true ? buscarPartido.visitorId : body.visitorId;
         //validar si el body.name viene vacio usar el de la base y si no viene vacio usar el body.name
-        let bodyEstadio = isEmpty(body.estadio) === true ? buscarPartido.estadio : body.estadio;
+        let bodyEstadio = isEmpty(body.stadium) === true ? buscarPartido.stadium : body.stadium;
         //Validando el resultado a empate
-        if (body.localGol == body.visitaGol) {
+        if (body.localGol == body.visitorGol) {
             bodyResultado = "E";
         }
         //Validando el resultado a Local
-        if (body.localGol  > body.visitaGol) {
+        if (body.localGol  > body.visitorGol) {
             bodyResultado = "L";
         }
          //Validando el resultado a Visitante
-         if (body.localGol  < body.visitaGol) {
+         if (body.localGol  < body.visitorGol) {
             bodyResultado = "V";
         }
 
-        const updatePartido = await models.partido.update({
+        const updatePartido = await models.game.update({
             
-            temporada:  bodyTemporada,
-            torneo:  bodyTorneo,
-            jornada:  bodyJornada,
-            fecha:  bodyFecha,
-            hora:  bodyHora,
+            season:  bodyTemporada,
+            tournament:  bodyTorneo,
+            journey:  bodyJornada,
+            date:  bodyFecha,
+            time:  bodytime,
             localId: bodyLocalId,
-            localGol: body.localGol,
-            visitaId: bodyVisitaId,
-            visitaGol: body.visitaGol,
-            estadio: bodyEstadio,
-            resultado: bodyResultado
+            visitorId: body.localGol,
+            localGol: bodyVisitaId,
+            visitorGol: body.visitaGol,
+            stadium: bodyEstadio,
+            result: bodyResultado
             },
             {
                 where: { id: pk}
@@ -167,21 +169,21 @@ const editPartido =  async (req, res) => {
         if (updatePartido == 0) {
             return res.status(204).send('Not content');
           }else{
-            findPartidoUpdate = await models.partido.findByPk(pk,{
+            findPartidoUpdate = await models.game.findByPk(pk,{
                 attributes:
                 [
                     "id", 
-                    "temporada", 
-                    "torneo", 
-                    "jornada", 
-                    "fecha", 
-                    "hora", 
+                    "season", 
+                    "tournament", 
+                    "journey", 
+                    "date", 
+                    "time", 
                     "localId",
+                    "visitorId",
                     "localGol",
-                    "visitaId",
-                    "visitaGol",
-                    "estadio",
-                    "resultado"
+                    "visitorGol",
+                    "stadium",
+                    "result"
                 ]
             });
             partidoUpdate = 'Partido actualizado';
@@ -201,59 +203,44 @@ const editPartido =  async (req, res) => {
 */
 const findByJornada = async (req, res) => {
     try {
-        
      const pkjornada = req.params.numJornada;
 
-    const findJornada = await models.partido.findAll({
+    const findJornada = await models.game.findAll({
         where: {
-            jornada: pkjornada
+            journey: pkjornada
         },
         attributes: [
             "id", 
-            "temporada", 
-            "torneo", 
-            "jornada", 
-            "fecha", 
-            "hora", 
+            "season", 
+            "tournament", 
+            "journey", 
+            "date", 
+            "time", 
             "localId",
-            "localGol",
-            "visitaId",
-            "visitaGol",
-            "estadio",
-            "resultado"
+            "visitorId",
+            "stadium"
         ]
       });
     if(isEmpty(findJornada)) return res.status(204).send("No se encontro la Jornada");
     //llamamos a todos los equipo
-    const allEquipos = await models.equipo.findAll({
-        attributes: [
-            "id",
-            "nombre"
-        ]
+    const allEquipos = await models.team.findAll({
+       attributes:["id", "name", "logo"]
     });
-var localIdArray = [];
-var visitaIdArray = [];
-    for (let index = 0; index < findJornada.length; index++) {
-        //cambiamos el numero de localId a el nombre del equipo
-        allEquipos.forEach(equipo => {
-            if (findJornada[index].localId == equipo.id) {
-                console.log(findJornada[index].localId, equipo.id);
-                findJornada[index].localId = equipo.nombre;
-                console.log(findJornada[index].localId);
+    //console.log(allEquipos)
+    var jornada = [];
+    jornada = findJornada;
+   
+    for (let index = 0; index < jornada.length; index++) {
+        for (let i = 0; i < allEquipos.length; i++) {
+            if(jornada[index].localId == allEquipos[i].id) {
+                jornada[index].localId = [allEquipos[i].name, allEquipos[i].logo]
             }
-        });
-        //cambiamos el numero de visitaId a el nombre del equipo
-        allEquipos.forEach(equipo => {
-            if (findJornada[index].visitaId == equipo.id) {
-                console.log(findJornada[index].visitaId, equipo.id);
-                findJornada[index].visitaId = equipo.nombre;
-                console.log(findJornada[index].visitaId);
+            if(jornada[index].visitorId == allEquipos[i].id) {
+                jornada[index].visitorId = [allEquipos[i].name, allEquipos[i].logo]
             }
-        });
-        
+        }
     }
-    
-     res.status(201).send( findJornada);
+     res.status(201).send(jornada);
     } catch (error) {
         res.status(500).send(error.message);
     }

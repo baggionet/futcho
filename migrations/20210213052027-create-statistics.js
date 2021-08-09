@@ -1,23 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('estadisticas', {
+    return queryInterface.createTable('statistics', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      equipoId: {
+      teamId: {
         type: Sequelize.INTEGER
       },
-      temporada: {
+      season: {
         type: Sequelize.STRING
       },
-      torneo: {
+      tournament: {
         type: Sequelize.STRING
       },
-      jornada: {
+      journey: {
         type: Sequelize.INTEGER
       },
       jj: {
@@ -41,10 +41,10 @@ module.exports = {
       gdif: {
         type: Sequelize.INTEGER
       },
-      puntos: {
+      score: {
         type: Sequelize.INTEGER
       },
-      posicion: {
+      position: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -58,6 +58,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('estadisticas');
+    return queryInterface.dropTable('statistics');
   }
 };
