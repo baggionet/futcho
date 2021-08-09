@@ -19,7 +19,6 @@ server.use(morgan('dev'));
 server.use(bodyParser.json());
 server.use('/api/quiniela', routes);
 server.use('/api/quiniela',express.static(__dirname + '/public'));
-server.use(express.static(__dirname + '/images/equipo'));
 server.use(express.static(__dirname + '/images/perfiles'));
 
 module.exports = server;
